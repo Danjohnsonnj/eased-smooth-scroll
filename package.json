@@ -1,22 +1,24 @@
 {
-  "name": "untitled",
+  "name": "eased-smooth-scroll",
   "version": "1.0.0",
-  "description": "",
+  "description": "Ensure smooth scrolling for scrollTo, scrollBy and scrollIntoView. Uses native browser API if available.",
   "main": "index.js",
   "scripts": {
     "publish": "npm run clean && npm run build && git subtree push --prefix dist origin gh-pages",
     "clean": "rm -rf dist && rm -rf .cache",
-    "dev": "parcel *.html --https",
-    "build": "parcel build --public-url . *.html"
+    "dev": "npm run clean && parcel **/*.html"
   },
   "keywords": [],
-  "author": "",
+  "author": "Dan Johnson",
   "license": "ISC",
   "devDependencies": {
     "less": "^3.12.2",
     "parcel-bundler": "^1.12.4"
   },
   "browserslist": [
-    "last 1 Chrome version"
-  ]
+    "defaults"
+  ],
+  "dependencies": {
+    "js-easing-functions": "^1.0.3"
+  }
 }
