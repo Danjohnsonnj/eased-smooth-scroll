@@ -1,5 +1,5 @@
 const animateScrollTo = require('./AnimateScrollTo');
-const getOptions = require('./GetOptions');
+const { getOptions } = require('./GetOptions');
 
 /**
  * Scroll the target container by a specific x and y value.

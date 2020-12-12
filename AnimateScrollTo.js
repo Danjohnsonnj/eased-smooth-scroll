@@ -1,5 +1,5 @@
 const { easeInOutCubic } = require('js-easing-functions');
-const getOptions = require('./GetOptions');
+const { getOptions } = require('./GetOptions');
 
 /**
  * Scroll the target container to a specific x and y value.

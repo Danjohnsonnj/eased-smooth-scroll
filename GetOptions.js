@@ -37,4 +37,7 @@ function getOptions(...options) {
   return _options;
 }
 
-module.exports = getOptions;
+module.exports = {
+  getOptions,
+  DEFAULT_OPTIONS,
+};
