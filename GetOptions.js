@@ -1,8 +1,10 @@
+const isSmoothScrollSupported = 'scrollBehavior' in document.documentElement.style;
 const DEFAULT_OPTIONS = {
   target: document.scrollingElement,
   x: 0,
   y: 100,
-  duration: 500
+  duration: 500,
+  useNativeScroll: (isSmoothScrollSupported)
 }
 
 function getOptions(...options) {
@@ -24,11 +26,12 @@ function getOptions(...options) {
     options.length === 1 &&
     (typeof options[0] === 'object')
   ) {
-    const { x, y, target, duration } = options[0];
+    const { x, y, target, duration, useNativeScroll } = options[0];
     x && (_options.x = x);
     y && (_options.y = y);
     target && (_options.target = target);
     duration && (_options.duration = duration);
+    useNativeScroll !== undefined && (_options.useNativeScroll = useNativeScroll);
   }
 
   return _options;

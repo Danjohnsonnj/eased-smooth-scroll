@@ -1,12 +1,10 @@
 const { easeInOutCubic } = require('js-easing-functions');
 const getOptions = require('./GetOptions');
-const isSmoothScrollSupported = 'scrollBehavior' in document.documentElement.style;
 
 function AnimateScrollTo(...args) {
-  const { x, y, target, duration } = getOptions(...args);
+  const { x, y, target, duration, useNativeScroll } = getOptions(...args);
 
-  // TODO: add option to skip native
-  if (isSmoothScrollSupported) {
+  if (useNativeScroll) {
     target.scrollTo({
       top: y,
       left: x,

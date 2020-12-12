@@ -1,12 +1,10 @@
 const animateScrollTo = require('./AnimateScrollTo');
 const getOptions = require('./GetOptions');
-const isSmoothScrollSupported = 'scrollBehavior' in document.documentElement.style;
 
-function AnimateScrollBy(options) {
-  const { x, y, target, duration } = getOptions(options);
+function AnimateScrollBy(...args) {
+  const { x, y, target, duration, useNativeScroll } = getOptions(...args);
 
-  // TODO: add option to skip native
-  if (isSmoothScrollSupported) {
+  if (useNativeScroll) {
     target.scrollBy({
       top: y,
       left: x,
@@ -22,7 +20,8 @@ function AnimateScrollBy(options) {
     target,
     x: currentX + x,
     y: currentY + y,
-    duration
+    duration,
+    useNativeScroll
   })
 
 }
