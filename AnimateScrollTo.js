@@ -28,7 +28,7 @@ const AnimateScrollTo = ({
   const win = target.ownerDocument.defaultView;
   let animationId = null;
 
-  const mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? 'DOMMouseScroll' : 'mousewheel';
+  const mousewheelevt = 'onmousewheel' in document ? 'wheel' : 'mousewheel';
   const cancelAnimation = () => {
     if (animationId){
       win.cancelAnimationFrame(animationId);
@@ -44,7 +44,7 @@ const AnimateScrollTo = ({
     easedY = easeInOutCubic(elapsed, currentY, verticalDistance, duration);
     console.log(`${easedX}, ${easedY}`);
     win.scrollTo(easedX, easedY);
-    
+
     if (elapsed < duration) {
       animationId = requestAnimationFrame(stepScroll);
     } else {
