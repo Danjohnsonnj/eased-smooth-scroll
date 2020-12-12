@@ -1,5 +1,5 @@
 const { easeInOutCubic } = require('js-easing-functions');
-const getOptions = require('./GetOptions');
+const { getOptions } = require('./GetOptions');
 
 /**
  * Scroll the target container to a specific x and y value.
@@ -52,15 +52,15 @@ function AnimateScrollTo(...args) {
   const startTime = Date.now();
   const stepScroll = () => {
     const elapsed = Date.now() - startTime;
-    easedX = easeInOutCubic(elapsed, currentX, horizontalDistance, duration);
-    easedY = easeInOutCubic(elapsed, currentY, verticalDistance, duration);
-    console.log(`${easedX}, ${easedY}`);
-    win.scrollTo(easedX, easedY);
+    const easedX = easeInOutCubic(elapsed, currentX, horizontalDistance, duration);
+    const easedY = easeInOutCubic(elapsed, currentY, verticalDistance, duration);
+    // console.log(`${easedX}, ${easedY}`);
+    target.scrollTo(easedX, easedY);
 
     if (elapsed < duration) {
       animationId = requestAnimationFrame(stepScroll);
     } else {
-      win.scrollTo(x, y);
+      target.scrollTo(x, y);
     }
   }
   stepScroll();

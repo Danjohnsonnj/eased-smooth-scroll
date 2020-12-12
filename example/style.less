@@ -28,9 +28,9 @@ section:first-of-type {
 }
 section h2 {
   counter-increment: sectionCounter;
-  
+
   &::after {
-    font-size: 20vmin;
+    font-size: 20vmax;
     content: counter(sectionCounter);
     color: gray;
 
@@ -39,5 +39,15 @@ section h2 {
       -webkit-text-stroke-width: 1px;
       -webkit-text-stroke-color: black;
     }
+  }
+}
+
+article {
+  width: 100%;
+  height: 100vh;
+  overflow: scroll;
+
+  section {
+    width: 200vw;
   }
 }
