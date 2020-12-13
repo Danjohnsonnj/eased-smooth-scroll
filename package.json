@@ -7,7 +7,9 @@
     "publish": "npm run clean && npm run build && git subtree push --prefix dist origin gh-pages",
     "clean": "rm -rf dist && rm -rf .cache",
     "dev": "npm run clean && parcel **/*.html",
-    "test": "jest --watch"
+    "test": "jest",
+    "test:coverage": "jest --config ./jest-coverage.config.json",
+    "test:watch": "jest --config ./jest-watch.config.json --watch"
   },
   "keywords": [],
   "author": "Dan Johnson",
@@ -15,7 +17,9 @@
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
+    "@jest-runner/electron": "^3.0.0",
     "babel-jest": "^26.6.3",
+    "electron": "^11.1.0",
     "jest": "^26.6.3",
     "less": "^3.12.2",
     "parcel": "^1.12.4",

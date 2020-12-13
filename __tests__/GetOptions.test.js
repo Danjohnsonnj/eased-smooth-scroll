@@ -1,4 +1,4 @@
-import { getOptions, DEFAULT_OPTIONS } from '../GetOptions'
+import { getOptions, DEFAULT_OPTIONS } from '../GetOptions';
 
 describe('GetOptions', () => {
   test('no parameters returns defaults ', () => {
