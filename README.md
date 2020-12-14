@@ -14,10 +14,13 @@ npm install eased-smooth-scroll
 ```js
 const { animateScrollTo } = require('../index.js');
 
-// This function has two options for parameter: a comma separated pair of numbers corresponding to the `x` and `y` values to scroll to (as in the native API, https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo#Parameters)
+// This function has two options for parameter: a comma separated pair of numbers
+// corresponding to the `x` and `y` values to scroll to (as in the native API,
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo#Parameters)
 animateScrollTo(0, 500);
 
-// or an Object with additional configuration options, such as the `duration`, the element to scroll, and whether to always use the custom scroll behavior.
+// or an Object with additional configuration options, such as the `duration`, the
+// element to scroll, and whether to always use the custom scroll behavior.
 animateScrollTo({ x: 0, y: 500 });
 
 // In either case, the method returns a Promise
@@ -34,7 +37,9 @@ animateScrollTo({
 ```js
 const { animateScrollBy } = require('../index.js');
 
-// This function has two options for parameter: a comma separated pair of numbers corresponding to the `x` and `y` values to scroll to (as in the native API, https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo#Parameters)
+// This function has two options for parameter: a comma separated pair of numbers
+// corresponding to the `x` and `y` values to scroll to (as in the native API,
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy#Parameters)
 animateScrollBy(0, 500);
 
 // or an Object with additional configuration options, such as the `duration`, the element to scroll, and whether to always use the custom scroll behavior.
