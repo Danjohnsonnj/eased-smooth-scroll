@@ -4,7 +4,7 @@
   "description": "Ensure smooth scrolling for scrollTo, scrollBy and scrollIntoView. Uses native browser API if available.",
   "main": "index.js",
   "scripts": {
-    "publish": "npm run clean && npm run build && git subtree push --prefix dist origin gh-pages",
+    "publish": "npm run clean && parcel build index.js --target browser --no-minify",
     "clean": "rm -rf dist && rm -rf .cache",
     "dev": "npm run clean && parcel **/*.html",
     "test": "jest --config ./jest-default.config.json",
