@@ -43,10 +43,8 @@ function AnimateScrollTo(...args) {
 
   const mousewheelevt = 'onmousewheel' in document ? 'wheel' : 'mousewheel';
   const cancelAnimation = () => {
-    if (animationId){
-      win.cancelAnimationFrame(animationId);
-      animationId = null;
-    }
+    win.cancelAnimationFrame(animationId);
+    animationId = null;
   }
   win.document.addEventListener(mousewheelevt, cancelAnimation, false);
 
