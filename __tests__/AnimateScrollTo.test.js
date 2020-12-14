@@ -1,7 +1,8 @@
+import 'regenerator-runtime/runtime';
 import { animateScrollTo } from '../index.js';
 
 describe('AnimateScrollTo', () => {
-  beforeEach(() => {
+  beforeAll(() => {
     const container = document.createElement('div');
     container.id = 'scrollContainer';
     container.style.height = '10000px';
@@ -12,119 +13,67 @@ describe('AnimateScrollTo', () => {
     document.body.appendChild(container);
   });
 
-  afterEach(() => {
-    const container = document.getElementById('scrollContainer');
-    document.body.removeChild(container);
-    document.body.style.height = 'initial';
-    document.body.style.width = 'initial';
-    document.body.style.overflow = 'initial';
+  beforeEach(() => {
     scrollTo(0, 0);
   });
 
-  // Native browser API, as a sanity check
-  test('scrollTo(0, 100)', (done) => {
-    const testTarget = document.scrollingElement;
-
-    function callback() {
-      const { scrollLeft, scrollTop } = testTarget;
-      expect(scrollLeft).toEqual(0);
-      expect(scrollTop).toEqual(100);
-      done();
-    }
-
-    scrollTo(0, 100);
-
-    setTimeout(callback, 300);
+  afterEach(() => {
+    scrollTo(0, 0);
   });
 
-  // Native browser API, as a sanity check
-  test('scrollTo(100, 0)', (done) => {
+  test('x: 0, y: 100, useNativeScroll: true', async () => {
     const testTarget = document.scrollingElement;
 
-    function callback() {
-      const { scrollLeft, scrollTop } = testTarget;
-      expect(scrollLeft).toEqual(100);
-      expect(scrollTop).toEqual(0);
-      done();
-    }
-
-    scrollTo(100, 0);
-
-    setTimeout(callback, 300);
-  });
-
-  test('x: 0, y: 100, useNativeScroll: true', (done) => {
-    const testTarget = document.scrollingElement;
-
-    function callback() {
-      const { scrollLeft, scrollTop } = testTarget;
-      // expect(scrollLeft).toEqual(0);
-      expect(scrollTop).toEqual(100);
-      done();
-    }
-
-    animateScrollTo({
+    const { x, y } = await animateScrollTo({
       x: 0,
       y: 100,
       useNativeScroll: true,
       target: testTarget
     });
 
-    setTimeout(callback, 300);
+    expect(x).toEqual(0);
+    expect(y).toEqual(100);
+    expect(testTarget.scrollLeft).toEqual(x);
+    expect(testTarget.scrollTop).toEqual(y);
   });
 
-  test('x: 100, y: 0, useNativeScroll: true', (done) => {
+  test('x: 100, y: 0, useNativeScroll: true', async () => {
     const testTarget = document.scrollingElement;
 
-    function callback() {
-      const { scrollLeft, scrollTop } = testTarget;
-      expect(scrollLeft).toEqual(100);
-      // expect(scrollTop).toEqual(0);
-      done();
-    }
-
-    animateScrollTo({
+    const { x, y } = await animateScrollTo({
       x: 100,
       y: 0,
       useNativeScroll: true,
       target: testTarget
     });
 
-    setTimeout(callback, 1000);
+    expect(x).toEqual(100);
+    expect(y).toEqual(0);
+    expect(testTarget.scrollLeft).toEqual(x);
+    expect(testTarget.scrollTop).toEqual(y);
   });
 
-  test('x: 100, y: 0, duration: 200, useNativeScroll: false', (done) => {
+  test('x: 100, y: 0, duration: 500, useNativeScroll: false', async () => {
     const testTarget = document.scrollingElement;
 
-    function callback() {
-      const { scrollLeft, scrollTop } = testTarget;
-      expect(scrollLeft).toEqual(100);
-      // expect(scrollTop).toEqual(0);
-      done();
-    }
-
-    animateScrollTo({
+    const { x, y } = await animateScrollTo({
       x: 100,
       y: 0,
-      duration: 200,
+      duration: 500,
       useNativeScroll: false,
       target: testTarget
     });
 
-    setTimeout(callback, 300);
+    expect(x).toEqual(100);
+    expect(y).toEqual(0);
+    expect(testTarget.scrollLeft).toEqual(x);
+    expect(testTarget.scrollTop).toEqual(y);
   });
 
-  test('x: 0, y: 1000, duration: 200, useNativeScroll: false', (done) => {
+  test('x: 0, y: 1000, duration: 200, useNativeScroll: false', async () => {
     const testTarget = document.scrollingElement;
 
-    function callback() {
-      const { scrollLeft, scrollTop } = testTarget;
-      expect(scrollLeft).toEqual(0);
-      expect(scrollTop).toEqual(1000);
-      done();
-    }
-
-    animateScrollTo({
+    const { x, y } = await animateScrollTo({
       x: 0,
       y: 1000,
       duration: 200,
@@ -132,6 +81,50 @@ describe('AnimateScrollTo', () => {
       target: testTarget
     });
 
-    setTimeout(callback, 300);
+    expect(x).toEqual(0);
+    expect(y).toEqual(1000);
+    expect(testTarget.scrollLeft).toEqual(x);
+    expect(testTarget.scrollTop).toEqual(y);
+  });
+
+  test('x: 0, y: 0, duration: 200, useNativeScroll: false', async () => {
+    const testTarget = document.scrollingElement;
+
+    const { x, y } = await animateScrollTo({
+      x: 0,
+      y: 0,
+      duration: 200,
+      useNativeScroll: false,
+      target: testTarget
+    });
+
+    expect(x).toEqual(0);
+    expect(y).toEqual(0);
+    expect(testTarget.scrollLeft).toEqual(x);
+    expect(testTarget.scrollTop).toEqual(y);
+  });
+
+  test('x: 0, y: 1000, duration: 500, useNativeScroll: false, interrupted', (done) => {
+    const testTarget = document.scrollingElement;
+    const mousewheelevt = 'onmousewheel' in document ? 'wheel' : 'mousewheel';
+
+    animateScrollTo({
+      x: 1000,
+      y: 1000,
+      duration: 500,
+      useNativeScroll: false,
+      target: testTarget
+    }).then(({ x, y }) => {
+      expect(x).not.toEqual(0);
+      expect(x).not.toEqual(1000);
+      expect(testTarget.scrollLeft).toEqual(x);
+      expect(y).not.toEqual(0);
+      expect(y).not.toEqual(1000);
+      expect(testTarget.scrollTop).toEqual(y);
+      done();
+    });
+    setTimeout(() => {
+      document.dispatchEvent(new Event(mousewheelevt));
+    }, 100);
   });
 });
