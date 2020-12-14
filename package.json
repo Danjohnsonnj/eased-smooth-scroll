@@ -7,9 +7,9 @@
     "publish": "npm run clean && npm run build && git subtree push --prefix dist origin gh-pages",
     "clean": "rm -rf dist && rm -rf .cache",
     "dev": "npm run clean && parcel **/*.html",
-    "test": "jest",
+    "test": "jest --config ./jest-default.config.json",
     "test:coverage": "jest --config ./jest-coverage.config.json",
-    "test:watch": "jest --config ./jest-watch.config.json --watch"
+    "test:watch": "jest --config ./jest-default.config.json --watch"
   },
   "keywords": [],
   "author": "Dan Johnson",

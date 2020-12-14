@@ -1,5 +1,5 @@
-const animateScrollTo = require('./AnimateScrollTo');
-const animateScrollBy = require('./AnimateScrollBy');
+const animateScrollTo = require('./src/AnimateScrollTo');
+const animateScrollBy = require('./src/AnimateScrollBy');
 
 module.exports = {
   animateScrollBy,

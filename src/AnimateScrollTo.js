@@ -1,5 +1,6 @@
 const { easeInOutCubic } = require('js-easing-functions');
 const { getOptions } = require('./GetOptions');
+const getScrollStopPromise = require('./GetScrollStopPromise');
 
 /**
  * Scroll the target container to a specific x and y value.
@@ -15,7 +16,7 @@ const { getOptions } = require('./GetOptions');
  * @param {args.duration<number>} duration - The duration of the animation in milliseconds.
  * @param {args.useNativeScroll<boolean>} useNativeScroll - Use native scrollTo if smooth scrolling is supported.
  *
- * @return {undefined}
+ * @return {Promise} Resolves with the target element's scrollLeft and scrollTop, { x: number, y: number }
  */
 function AnimateScrollTo(...args) {
   const { x, y, target, duration, useNativeScroll } = getOptions(...args);
@@ -26,15 +27,15 @@ function AnimateScrollTo(...args) {
       left: x,
       behavior: 'smooth'
     })
-    return;
+    return getScrollStopPromise(target);
   }
 
   const currentX = target.scrollLeft;
   const currentY = target.scrollTop;
-  const horizontalDistance = x - currentX;
-  const verticalDistance = y - currentY;
+  const horizontalDistance = Math.round(x - currentX);
+  const verticalDistance = Math.round(y - currentY);
   if (horizontalDistance === 0 && verticalDistance === 0) {
-    return;
+    return getScrollStopPromise(target, true);
   }
 
   const win = target.ownerDocument.defaultView;
@@ -42,10 +43,8 @@ function AnimateScrollTo(...args) {
 
   const mousewheelevt = 'onmousewheel' in document ? 'wheel' : 'mousewheel';
   const cancelAnimation = () => {
-    if (animationId){
-      win.cancelAnimationFrame(animationId);
-      animationId = null;
-    }
+    win.cancelAnimationFrame(animationId);
+    animationId = null;
   }
   win.document.addEventListener(mousewheelevt, cancelAnimation, false);
 
@@ -54,7 +53,6 @@ function AnimateScrollTo(...args) {
     const elapsed = Date.now() - startTime;
     const easedX = easeInOutCubic(elapsed, currentX, horizontalDistance, duration);
     const easedY = easeInOutCubic(elapsed, currentY, verticalDistance, duration);
-    // console.log(`${easedX}, ${easedY}`);
     target.scrollTo(easedX, easedY);
 
     if (elapsed < duration) {
@@ -64,6 +62,8 @@ function AnimateScrollTo(...args) {
     }
   }
   stepScroll();
+
+  return getScrollStopPromise(target);
 }
 
 module.exports = AnimateScrollTo;

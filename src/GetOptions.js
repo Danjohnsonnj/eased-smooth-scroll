@@ -27,8 +27,8 @@ function getOptions(...options) {
     (typeof options[0] === 'object')
   ) {
     const { x, y, target, duration, useNativeScroll } = options[0];
-    x && (_options.x = x);
-    y && (_options.y = y);
+    typeof x === 'number' && (_options.x = x);
+    typeof y === 'number' && (_options.y = y);
     target && (_options.target = target);
     duration && (_options.duration = duration);
     useNativeScroll !== undefined && (_options.useNativeScroll = useNativeScroll);

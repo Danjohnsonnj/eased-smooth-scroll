@@ -1,5 +1,6 @@
 const animateScrollTo = require('./AnimateScrollTo');
 const { getOptions } = require('./GetOptions');
+const getScrollStopPromise = require('./GetScrollStopPromise');
 
 /**
  * Scroll the target container by a specific x and y value.
@@ -15,7 +16,7 @@ const { getOptions } = require('./GetOptions');
  * @param {args.duration<number>} duration - The duration of the animation in milliseconds.
  * @param {args.useNativeScroll<boolean>} useNativeScroll - Use native scrollTo if smooth scrolling is supported.
 
- * @return {undefined}
+  * @return {Promise} Resolves with the target element's scrollLeft and scrollTop, { x: number, y: number }
  */
 function AnimateScrollBy(...args) {
   const { x, y, target, duration, useNativeScroll } = getOptions(...args);
@@ -26,13 +27,13 @@ function AnimateScrollBy(...args) {
       left: x,
       behavior: 'smooth'
     })
-    return;
+    return getScrollStopPromise(target);
   }
 
   const currentX = target.scrollLeft;
   const currentY = target.scrollTop;
 
-  animateScrollTo({
+  return animateScrollTo({
     target,
     x: currentX + x,
     y: currentY + y,
