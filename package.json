@@ -31,5 +31,16 @@
   ],
   "dependencies": {
     "js-easing-functions": "^1.0.3"
-  }
+  },
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Danjohnsonnj/eased-smooth-scroll.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Danjohnsonnj/eased-smooth-scroll/issues"
+  },
+  "homepage": "https://github.com/Danjohnsonnj/eased-smooth-scroll#readme"
 }
