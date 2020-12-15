@@ -14,21 +14,21 @@ npm install eased-smooth-scroll
 ```js
 const { animateScrollTo } = require('../index.js');
 
-// This function has two options for parameter: a comma separated pair of numbers
-// corresponding to the `x` and `y` values to scroll to (as in the native API,
-// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo#Parameters)
+// This function has two options for thr parameter signature: a comma
+// separated pair of numbers corresponding to the `left` and `top` values
+// to scroll to (as in the native API, https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo#Parameters)
 animateScrollTo(0, 500);
 
 // or an Object with additional configuration options, such as the `duration`, the
 // element to scroll, and whether to always use the custom scroll behavior.
-animateScrollTo({ x: 0, y: 500 });
+animateScrollTo({ left: 0, top: 500 });
 
 // In either case, the method returns a Promise
 animateScrollTo({
-  x: 0,
-  y: 500,
-}).then(({ x, y }) => {
-  console.log(x, y); // 0 500
+  left: 0,
+  top: 500,
+}).then(({ left, top }) => {
+  console.log(left, top); // 0 500
 });
 
 ```
@@ -37,28 +37,28 @@ animateScrollTo({
 ```js
 const { animateScrollBy } = require('../index.js');
 
-// This function has two options for parameter: a comma separated pair of numbers
-// corresponding to the `x` and `y` values to scroll to (as in the native API,
-// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy#Parameters)
+// This function has two options for thr parameter signature: a comma
+// separated pair of numbers corresponding to the `left` and `top` values
+// to scroll to (as in the native API, https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy#Parameters)
 animateScrollBy(0, 500);
 
 // or an Object with additional configuration options, such as the `duration`, the element to scroll, and whether to always use the custom scroll behavior.
-animateScrollBy({ x: 0, y: 500 });
+animateScrollBy({ left: 0, top: 500 });
 
 // In either case, the method returns a Promise
 animateScrollBy({
-  x: 0,
-  y: 500,
-}).then(({ x, y }) => {
-  console.log(x, y); // 0 500
+  left: 0,
+  top: 500,
+}).then(({ left, top }) => {
+  console.log(left, top); // 0 500
 });
 
 ```
 
 
 ## TODO:
-- Clean up: make the options consistent with the native API, e.g. `top` and `left` not `x` and `y`.
+- Clean up: make the options consistent with the native API, e.g. `top` and `left` not `left` and `top`.
 - Improvement: if `duration` is supplied, `useNativeScroll` should be `false`
-- Known Issue: the delay on the return Promise resolver should account for very small distance over a very long duration, as the browser may report the x, y has not changed during some of the tweens.
+- Known Issue: the delay on the return Promise resolver should account for very small distance over a very long duration, as the browser may report the left, top has not changed during some of the tweens.
 - Feature: add optional easing function choice
 - Feature: support scrollIntoView

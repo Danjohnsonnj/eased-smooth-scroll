@@ -4,15 +4,15 @@ const checkScrolling = (resolve, target) => {
     clearTimeout(timer);
   }
 
-  const startx = target.scrollLeft;
-  const starty = target.scrollTop;
+  const startLeft = target.scrollLeft;
+  const startTop = target.scrollTop;
 
-  let stopx, stopy;
+  let stopLeft, stopTop;
   timer = setTimeout(() => {
-    stopx = target.scrollLeft;
-    stopy = target.scrollTop;
+    stopLeft = target.scrollLeft;
+    stopTop = target.scrollTop;
 
-    if (startx !== stopx && starty !== stopy) {
+    if (startLeft !== stopLeft && startTop !== stopTop) {
       checkScrolling(resolve, target);
     }
     resolve(false);

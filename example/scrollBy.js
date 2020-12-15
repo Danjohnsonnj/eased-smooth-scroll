@@ -6,8 +6,8 @@ document.querySelectorAll('section').forEach((section) => {
     //   .then(coords => console.log(coords));
 
     animateScrollBy({
-      x: 0,
-      y: window.innerHeight,
+      left: 0,
+      top: window.innerHeight,
       duration: 500,
       useNativeScroll: true
     }).then(coords => console.log(coords));  })
