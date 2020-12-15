@@ -21,61 +21,61 @@ describe('AnimateScrollBy', () => {
     scrollTo(0, 0);
   });
 
-  test('x: 0, y: 100, useNativeScroll: true', async () => {
+  test('left: 0, top: 100, useNativeScroll: true', async () => {
     const testTarget = document.scrollingElement;
 
-    const { x, y } = await animateScrollBy({
-      x: 0,
-      y: 100,
+    const { left, top } = await animateScrollBy({
+      left: 0,
+      top: 100,
       useNativeScroll: true,
       target: testTarget
     });
 
-    expect(x).toEqual(0);
-    expect(y).toEqual(100);
+    expect(left).toEqual(0);
+    expect(top).toEqual(100);
   });
 
-  test('x: 100, y: 0, useNativeScroll: true', async () => {
+  test('left: 100, top: 0, useNativeScroll: true', async () => {
     const testTarget = document.scrollingElement;
 
-    const { x, y } = await animateScrollBy({
-      x: 100,
-      y: 0,
+    const { left, top } = await animateScrollBy({
+      left: 100,
+      top: 0,
       useNativeScroll: true,
       target: testTarget
     });
 
-    expect(x).toEqual(100);
-    expect(y).toEqual(0);
+    expect(left).toEqual(100);
+    expect(top).toEqual(0);
   });
 
-  test('x: 100, y: 0, duration: 200, useNativeScroll: false', async () => {
+  test('left: 100, top: 0, duration: 200, useNativeScroll: false', async () => {
     const testTarget = document.scrollingElement;
 
-    const { x, y } = await animateScrollBy({
-      x: 100,
-      y: 0,
+    const { left, top } = await animateScrollBy({
+      left: 100,
+      top: 0,
       duration: 200,
       useNativeScroll: false,
       target: testTarget
     });
 
-    expect(x).toEqual(100);
-    expect(y).toEqual(0);
+    expect(left).toEqual(100);
+    expect(top).toEqual(0);
   });
 
-  test('x: 0, y: 1000, duration: 200, useNativeScroll: false', async () => {
+  test('left: 0, top: 1000, duration: 200, useNativeScroll: false', async () => {
     const testTarget = document.scrollingElement;
 
-    const { x, y } = await animateScrollBy({
-      x: 0,
-      y: 1000,
+    const { left, top } = await animateScrollBy({
+      left: 0,
+      top: 1000,
       duration: 200,
       useNativeScroll: false,
       target: testTarget
     });
 
-    expect(x).toEqual(0);
-    expect(y).toEqual(1000);
+    expect(left).toEqual(0);
+    expect(top).toEqual(1000);
   });
 });

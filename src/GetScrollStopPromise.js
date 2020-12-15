@@ -3,7 +3,7 @@ const isScrolling = require('./isScrolling');
 const getScrollStopPromise = function(scrollEl = document.scrollingElement, resolveImmediately = false) {
   if (resolveImmediately) {
     return new Promise((resolve) => {
-      setTimeout(() => resolve({ x: scrollEl.scrollLeft, y: scrollEl.scrollTop }), 100);
+      setTimeout(() => resolve({ left: scrollEl.scrollLeft, top: scrollEl.scrollTop }), 100);
     });
   }
 
@@ -11,7 +11,7 @@ const getScrollStopPromise = function(scrollEl = document.scrollingElement, reso
     const scrollHandler = () => {
       isScrolling()
         .then(() => {
-          resolve({ x: scrollEl.scrollLeft, y: scrollEl.scrollTop });
+          resolve({ left: scrollEl.scrollLeft, top: scrollEl.scrollTop });
           document.removeEventListener('scroll', scrollHandler);
         });
     };
