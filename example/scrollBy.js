@@ -9,6 +9,6 @@ document.querySelectorAll('section').forEach((section) => {
       left: 0,
       top: window.innerHeight,
       duration: 500,
-      useNativeScroll: false
+      useNativeScroll: true
     }).then(coords => console.log(coords));  })
 })

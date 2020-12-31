@@ -57,6 +57,7 @@ animateScrollBy({
 
 
 ## TODO:
+- Clean up: make the options consistent with the native API, e.g. `top` and `left` not `left` and `top`.
 - Improvement: if `duration` is supplied, `useNativeScroll` should be `false`
 - Known Issue: the delay on the return Promise resolver should account for very small distance over a very long duration, as the browser may report the left, top has not changed during some of the tweens.
 - Feature: add optional easing function choice
