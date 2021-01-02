@@ -4,6 +4,5 @@
   "clearMocks": true,
   "verbose": true,
   "collectCoverage": true,
-  "coverageDirectory": "coverage",
-  "setupFiles": ["dotenv/config"]
+  "coverageDirectory": "coverage"
 }
