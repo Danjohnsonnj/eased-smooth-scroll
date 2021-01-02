@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1609445096097" clover="3.2.0">
-  <project timestamp="1609445096098" name="All files">
+<coverage generated="1609609246416" clover="3.2.0">
+  <project timestamp="1609609246416" name="All files">
     <metrics statements="90" coveredstatements="88" conditionals="44" coveredconditionals="39" methods="15" coveredmethods="15" elements="149" coveredelements="142" complexity="0" loc="90" ncloc="90" packages="2" files="6" classes="6"/>
     <package name="eased-smooth-scroll">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -51,12 +51,12 @@
         <line num="49" count="5" type="stmt"/>
         <line num="51" count="5" type="stmt"/>
         <line num="52" count="5" type="stmt"/>
-        <line num="53" count="84" type="stmt"/>
-        <line num="54" count="84" type="stmt"/>
-        <line num="55" count="84" type="stmt"/>
-        <line num="56" count="84" type="stmt"/>
-        <line num="58" count="84" type="cond" truecount="2" falsecount="0"/>
-        <line num="59" count="80" type="stmt"/>
+        <line num="53" count="73" type="stmt"/>
+        <line num="54" count="73" type="stmt"/>
+        <line num="55" count="73" type="stmt"/>
+        <line num="56" count="73" type="stmt"/>
+        <line num="58" count="73" type="cond" truecount="2" falsecount="0"/>
+        <line num="59" count="69" type="stmt"/>
         <line num="61" count="4" type="stmt"/>
         <line num="64" count="5" type="stmt"/>
         <line num="66" count="5" type="stmt"/>
@@ -92,7 +92,7 @@
         <line num="6" count="1" type="stmt"/>
         <line num="10" count="9" type="stmt"/>
         <line num="11" count="9" type="stmt"/>
-        <line num="12" count="109" type="stmt"/>
+        <line num="12" count="93" type="stmt"/>
         <line num="14" count="9" type="stmt"/>
         <line num="15" count="9" type="stmt"/>
         <line num="18" count="9" type="stmt"/>
@@ -101,18 +101,18 @@
       <file name="IsScrolling.js" path="/Users/danjohnson/repos/eased-smooth-scroll/src/IsScrolling.js">
         <metrics statements="14" coveredstatements="13" conditionals="7" coveredconditionals="5" methods="4" coveredmethods="4"/>
         <line num="2" count="2" type="stmt"/>
-        <line num="3" count="109" type="cond" truecount="2" falsecount="0"/>
-        <line num="4" count="107" type="stmt"/>
-        <line num="7" count="109" type="stmt"/>
-        <line num="8" count="109" type="stmt"/>
-        <line num="11" count="109" type="stmt"/>
+        <line num="3" count="93" type="cond" truecount="2" falsecount="0"/>
+        <line num="4" count="91" type="stmt"/>
+        <line num="7" count="93" type="stmt"/>
+        <line num="8" count="93" type="stmt"/>
+        <line num="11" count="93" type="stmt"/>
         <line num="12" count="9" type="stmt"/>
         <line num="13" count="9" type="stmt"/>
         <line num="15" count="9" type="cond" truecount="2" falsecount="2"/>
         <line num="16" count="0" type="stmt"/>
         <line num="18" count="9" type="stmt"/>
-        <line num="23" count="109" type="stmt"/>
-        <line num="24" count="109" type="stmt"/>
+        <line num="23" count="93" type="stmt"/>
+        <line num="24" count="93" type="stmt"/>
         <line num="28" count="2" type="stmt"/>
       </file>
     </package>
